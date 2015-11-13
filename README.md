@@ -31,134 +31,171 @@ while (it.hasNext()) {
 }
 ```
 ### Hash set
-
-   	HashSet<String> set = new HashSet<String>();
-   	hs.add("Test");
-   	set.add("Test");
-   	int size = set.size();
-   	System.out.println(size); // size is 1!
+```java
+HashSet<String> set = new HashSet<String>();
+hs.add("Test");
+set.add("Test");
+int size = set.size();
+System.out.println(size); // size is 1!
    
-   	boolean removed = set.remove("not removed");
-   	boolean isEmpty = set.isEmpty();
-   	boolean contains = set.contains("Test");
+boolean removed = set.remove("not removed");
+boolean isEmpty = set.isEmpty();
+boolean contains = set.contains("Test");
    	
-    Iterator iter = set.iterator();
-    while (iter.hasNext()) {
-        System.out.println(iter.next());
-    }
-      
+Iterator iter = set.iterator();
+while (iter.hasNext()) {
+    System.out.println(iter.next());
+}
+```      
 ### Dynamically sized array
 
-    List<String> list = new ArrayList<String>();
-    list.add(null); // yup!
-    list.add(0, "add element at index");
-    list.set(1, "not null anymore");
-    list.size();
-    list.get(0);
-    list.remove(0);
-
+```java
+List<String> list = new ArrayList<String>();
+list.add(null); // yup!
+list.add(0, "add element at index");
+list.set(1, "not null anymore");
+list.size();
+list.get(0);
+list.remove(0);
+```
 ## Files
 ### Read
 
-	try {
-		for (String line : Files.readAllLines(Paths.get("filepath.txt"))) {
-    		// readAllLines returns a type List<String>
-		}
-	} catch (Exception ex) {
-		System.out.println("Exception message: " + ex.getMessage());
+```java
+try {
+	for (String line : Files.readAllLines(Paths.get("filepath.txt"))) {
+		// readAllLines returns a type List<String>
 	}
-
+} catch (Exception ex) {
+	System.out.println("Exception message: " + ex.getMessage());
+}
+```
 
 ### Write
-	try (PrintStream out = new PrintStream(new FileOutputStream("filename.txt"))) {
-    	out.print(string);
-    	out.close();
-	} catch (Exception ex) {
-		System.out.println("Exception message: " + ex.getMessage());
-	}
+```java
+try (PrintStream out = new PrintStream(new FileOutputStream("filename.txt"))) {
+	out.print(string);
+	out.close();
+} catch (Exception ex) {
+	System.out.println("Exception message: " + ex.getMessage());
+}
+```
 	
 ## Variable type conversions
 ### String to integer
-	int result = Integer.parseInt("1234");
+```java
+int result = Integer.parseInt("1234");
+```
 ### Number type to string
-	String.valueOf(..);
+```java
+String.valueOf(..);
+```	
+
 ### String to double
-	Double.parseDouble(String s);
+```java
+Double.parseDouble(String s);
+```
+
 ### String to float
-	Float.parseFloat(String s);
+```java	
+Float.parseFloat(String s);
+```
+
 ## Syntax of basic OOP
 ### Constants
-	private static final int TABLE_SIZE = 37;
+```java
+private static final int TABLE_SIZE = 37;
+```
+
 ### Class with main
-	class Test {
-		public static void main(String[] args) {
-			// code
-		}
+```java
+class Test {
+	public static void main(String[] args) {
+		// code
 	}
+}
+```
 	
 ## Strings
 
 ### Length
-	stringVar.length();
-	
+```java
+"string".length();
+```
 ### Equality
-	String equalityTest = "Kiteboarding";
-	boolean isEqual = "Kiteboarding" == equalityTest; // true
-	
+```java
+String equalityTest = "Kiteboarding";
+boolean isEqual = "Kiteboarding" == equalityTest; // true
+```	
 ### Split a string
-	String[] lines = stringVar.split(System.getProperty("line.separator"));
+```java
+String[] lines = stringVar.split(System.getProperty("line.separator"));
+```
 
 ### Substring
-	"sam".substring(0,1); // returns "s"
+```java
+"sam".substring(0,1); // returns "s"
+```
 	
 ### Contains
-	"sam".contains("am); // returns true
+```java
+"sam".contains("am); // returns true
+```
 	
 ### Char array to string
-	char[] a = {'h', 'e', 'l', 'l', 'o', ' ', 'w', 'o', 'r', 'l', 'd'};
-	String b = new String(a);
+```java
+char[] a = {'h', 'e', 'l', 'l', 'o', ' ', 'w', 'o', 'r', 'l', 'd'};
+String b = new String(a);
+```
 
 ## Misc
 	
 ### Initialize array with values shorthand
-	int[] arr = {1,2,3};
+```java
+int[] arr = {1,2,3};
+```
 	
 ### Two dimensional array
-	int[][] twoDim = new int[10][10];
+```java
+int[][] twoDim = new int[10][10];
+```
 	
 ### Math
 Math functions operate on doubles. For floats use `FloatMath` library.
+
+```java
+int max = Math.max(11, 12);
+double max = Math.max(11.1, 12); // double input requires double out
 	
-	int max = Math.max(11, 12);
-	double max = Math.max(11.1, 12); // double input requires double out
-	
-	Math.floor(1.9);
-	Math.floor(1.1);
-	Math.sin(Math.PI + Math.E);
-	Math.log(100); // natural log
-	Math.pow(2, 10); 
-	Math.sqrt(256);
-	Math.random(); // returns [0, 1)
+Math.floor(1.9);
+Math.floor(1.1);
+Math.sin(Math.PI + Math.E);
+Math.log(100); // natural log
+Math.pow(2, 10); 
+Math.sqrt(256);
+Math.random(); // returns [0, 1)
+```
 
 ### Character manipulation example
-
-	private static String parseIOString(String str, int characters)
+```java
+private static String parseIOString(String str, int characters)
+{
+	String result = "";
+   for (int i = 0; i < characters; i++)
 	{
-		String result = "";
-	   for (int i = 0; i < characters; i++)
-		{
-      		int binaryPower = 128;
-      		int asciiValue = 0;
-      		for (int j = 0; j < 8; j++)
-      		{
-         		if (str.charAt(i*8+j) == 'I') {
-            		asciiValue += binaryPower;
-         		}
-         		binaryPower = binaryPower / 2;
-      		}
-      		char asciiChar = (char)asciiValue;
-      		result = result + asciiChar;
-		}
-		return result;
+  		int binaryPower = 128;
+  		int asciiValue = 0;
+  		for (int j = 0; j < 8; j++)
+  		{
+     		if (str.charAt(i*8+j) == 'I') {
+        		asciiValue += binaryPower;
+     		}
+     		binaryPower = binaryPower / 2;
+  		}
+  		char asciiChar = (char)asciiValue;
+  		result = result + asciiChar;
 	}
+	return result;
+}
+```
 
